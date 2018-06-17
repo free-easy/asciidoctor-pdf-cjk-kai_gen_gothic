@@ -29,11 +29,16 @@ Fonts = %w(
 
 Dir.chdir(FontsDir) do
   Fonts.each_with_index do |name, index|
-    puts "[#{index + 1}/#{Fonts.count}] Downloading #{name}"
-    File.open(name, 'wb') do |file|
-      file.write open("https://github.com/chloerei/asciidoctor-pdf-cjk-kai_gen_gothic/releases/download/v0.1.0-fonts/#{name}").read
+    if File.file?(name)
+      puts "[#{index + 1}/#{Fonts.count}] #{name} already installed"
+    else
+      puts "[#{index + 1}/#{Fonts.count}] Downloading #{name}"
+      File.open(name, 'wb') do |file|
+        file.write open("https://github.com/chloerei/asciidoctor-pdf-cjk-kai_gen_gothic/releases/download/v0.1.0-fonts/#{name}").read
+      end
     end
   end
 end
 
 puts "Done"
+
