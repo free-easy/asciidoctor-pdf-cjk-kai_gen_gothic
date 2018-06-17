@@ -17,20 +17,10 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.post_install_message = <<-EOF
-
-======================
-
-Run this command to download required fonts:
-
-    $ asciidoctor-pdf-cjk-kai_gen_gothic-install
-
-======================
-
-  EOF
+  spec.extensions    = ["data/fonts/Rakefile"]
 
   spec.add_dependency "asciidoctor-pdf-cjk", "~> 0.1.2"
+  spec.add_dependency "rake", "~> 10.0"
   spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest"
 end

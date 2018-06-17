@@ -1,10 +1,7 @@
-#!/usr/bin/env ruby
-
 require 'open-uri'
 
-FontsDir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data', 'fonts'))
-
-Fonts = %w(
+task :default do
+  Fonts = %w(
   KaiGenGothicCN-Bold-Italic.ttf
   KaiGenGothicCN-Bold.ttf
   KaiGenGothicCN-Regular-Italic.ttf
@@ -25,9 +22,8 @@ Fonts = %w(
   RobotoMono-BoldItalic.ttf
   RobotoMono-Italic.ttf
   RobotoMono-Regular.ttf
-)
+  )
 
-Dir.chdir(FontsDir) do
   Fonts.each_with_index do |name, index|
     if File.file?(name)
       puts "[#{index + 1}/#{Fonts.count}] #{name} already installed"
@@ -38,7 +34,6 @@ Dir.chdir(FontsDir) do
       end
     end
   end
+
+  puts "Done"
 end
-
-puts "Done"
-
